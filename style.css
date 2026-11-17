@@ -1,0 +1,103 @@
+/* Homework Digital Board - mobile first CSS (small screen styles first, big screen at the bottom) */
+:root {
+  --green: #0f6b3a;
+  --dark: #0a4a28;
+  --soft: #e8f4ec;
+  --gold: #f2c94c;
+  --red: #b3261e;
+  --muted: #51635a;
+  --line: #cfdcd3;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: #fbfaf5; color: #16221c; font-family: "Segoe UI", Arial, sans-serif;
+       font-size: 16px; line-height: 1.6; }
+img { max-width: 100%; }
+
+/* ---------- header (stays on top while scrolling) ---------- */
+header { background: #fff; border-bottom: 4px solid var(--green); position: sticky; top: 0; z-index: 10; }
+.top-bar { display: flex; align-items: center; gap: 8px; padding: 8px 12px; }
+.school { flex: 1; min-width: 0; line-height: 1.25; font-size: .85rem; }
+.school small { display: block; color: var(--muted); }
+.seld { width: auto; height: 40px; }
+#menu-btn { width: 44px; padding: 0; font-size: 1.5rem; background: var(--green); }
+
+/* menu: hidden on mobile until the button is tapped */
+#menu { display: none; flex-direction: column; background: #fff; border-top: 1px solid var(--line); }
+#menu.open { display: flex; }
+#menu a { padding: 14px 16px; color: var(--dark); text-decoration: none; font-weight: 700;
+          border-bottom: 1px solid var(--line); }
+#menu a.active { background: var(--soft); }
+
+.banner { margin: 0; padding: 6px 10px; background: #fff3cf; color: #4d3a00; text-align: center; font-size: .8rem; }
+main { max-width: 980px; margin: 0 auto; padding: 14px 12px 40px; }
+section { display: none; }
+section.show { display: block; }
+h1 { font-size: 1.5rem; margin: .3em 0; }
+h2 { font-size: 1.2rem; }
+
+/* ---------- hero ---------- */
+.hero { background: var(--green); color: #fff; border-radius: 14px; padding: 20px 16px; }
+.hero h1 { font-size: 1.7rem; margin: .1em 0; }
+.slogan { color: #f6d77c; font-weight: 700; margin: 0; }
+
+/* ---------- buttons (min 44px tall = easy to tap) ---------- */
+button, .btn { font: inherit; min-height: 44px; padding: 8px 16px; border: 0; border-radius: 10px;
+               background: var(--green); color: #fff; font-weight: 700; cursor: pointer;
+               text-decoration: none; display: inline-block; text-align: center; }
+.ghost { background: #fff; color: var(--dark); border: 2px solid var(--green); }
+.gold { background: var(--gold); color: #222; }
+.red { background: var(--red); }
+:focus-visible { outline: 3px solid #1a73e8; outline-offset: 2px; }
+
+/* ---------- cards: 1 column on mobile ---------- */
+.grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.pad, .info { padding: 12px; }
+.photo { height: 180px; background: var(--soft); display: flex; align-items: center; justify-content: center;
+         font-size: 2rem; cursor: pointer; }
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+.tag { display: inline-block; padding: 1px 10px; border-radius: 99px; background: var(--soft); color: var(--dark);
+       font-size: .8rem; font-weight: 700; }
+.tag.rejected { background: #fbdcd8; color: #7a1510; }
+.tag.published { background: #fff0c2; color: #5b4300; }
+.due { color: var(--red); font-weight: 700; }
+.muted { color: var(--muted); }
+.stars { font-size: 1.5rem; }
+.grid > div > button { width: 100%; margin-top: 8px; }
+
+/* ---------- forms (16px text stops iPhone from zooming in) ---------- */
+label { display: block; font-weight: 700; margin: 10px 0 4px; }
+input, select, textarea { font: inherit; font-size: 16px; width: 100%; min-height: 44px; padding: 10px;
+                          border: 2px solid var(--line); border-radius: 10px; background: #fff; }
+.filters { display: grid; gap: 4px 10px; grid-template-columns: 1fr; }
+.row { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
+#hw-preview { max-height: 220px; margin-top: 8px; border-radius: 10px; }
+.msg { padding: 10px 14px; border-radius: 10px; font-weight: 700; }
+.ok { background: #d7f3df; color: #0d4a22; }
+.err { background: #fbdcd8; color: #7a1510; }
+.scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 320px; }
+td, th { padding: 8px; border-bottom: 1px solid var(--line); text-align: left; }
+dialog { border: 0; border-radius: 14px; width: 92%; max-width: 560px; max-height: 90vh; overflow: auto; padding: 14px; }
+dialog img { width: 100%; border-radius: 10px; }
+footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 16px 12px; }
+footer p { margin: 2px 0; }
+
+/* ---------- tablet (600px and up) ---------- */
+@media (min-width: 600px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .filters { grid-template-columns: repeat(3, 1fr); }
+  .row { flex-direction: row; }
+  .school { font-size: 1rem; }
+}
+
+/* ---------- laptop (900px and up): menu becomes a normal bar ---------- */
+@media (min-width: 900px) {
+  #menu-btn { display: none; }
+  header { display: flex; align-items: center; justify-content: space-between; padding-right: 12px; }
+  #menu { display: flex; flex-direction: row; border: 0; gap: 4px; }
+  #menu a { border: 0; border-radius: 10px; padding: 10px 14px; }
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media print { header, .banner, footer, button { display: none; } }

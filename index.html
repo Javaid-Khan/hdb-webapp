@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!-- Homework Digital Board - Government Boys Secondary School Shahi Abad -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homework Digital Board</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER: logos + menu button + navigation -->
+  <header>
+    <div class="top-bar">
+      <img src="assets/school-logo.png" alt="School logo (proposed)" width="72" height="72">
+      <div class="school">
+        <strong>Government Boys Lower Secondary School Ramzan Goth Qasba Colony</strong>
+        <small>SEMIS Code: 408020125</small>
+      </div>
+      <img class="seld" src="assets/SELD-logo.png" alt="SELD Sindh logo" height="72">
+      <button id="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Open menu">☰</button>
+    </div>
+    <nav id="menu">
+      <a href="#home">Home</a>
+      <a href="#board">Homework</a>
+      <a href="#parent">Parent</a>
+      <a href="#teacher">Teacher</a>
+      <a href="#admin">Admin</a>
+      <a href="#help">Help</a>
+    </nav>
+  </header>
+
+  <p class="banner">DEMO: data is saved only in this browser. No login yet. Sample homework is not real.</p>
+
+  <main>
+
+    <!-- HOME -->
+    <section id="home">
+      <div class="hero">
+        <p class="slogan">School Se Ghar Tak — Homework Sab Ke Liye!</p>
+        <h1>Homework Digital Board</h1>
+        <p>Connecting Teachers, Students and Parents Through Digital Learning.</p>
+        <p>Teachers upload homework photos. After approval, parents see them on their phones.</p>
+        <a class="btn gold" href="#board">View Homework</a>
+      </div>
+      <p class="msg ok" id="home-count"></p>
+      <h2>How it works</h2>
+      <div class="grid">
+        <div class="card pad">📸 <b>1.</b> Teacher uploads homework photo</div>
+        <div class="card pad">✅ <b>2.</b> Administrator approves</div>
+        <div class="card pad">📱 <b>3.</b> Parents see it on their phone</div>
+      </div>
+    </section>
+
+    <!-- HOMEWORK BOARD -->
+    <section id="board">
+      <h1>Homework Board</h1>
+      <div class="filters">
+        <div><label for="f-subject">Subject</label><select id="f-subject"><option value="">All subjects</option></select></div>
+        <div><label for="f-date">Date</label><input type="date" id="f-date"></div>
+        <div><label for="f-search">Search</label><input type="search" id="f-search" placeholder="Search title"></div>
+      </div>
+      <div class="grid" id="board-list"></div>
+    </section>
+
+    <!-- PARENT -->
+    <section id="parent">
+      <h1>Parent Page</h1>
+      <label for="child">Choose child (demo)</label>
+      <select id="child"></select>
+      <div class="card pad" id="stars-box"></div>
+      <div class="grid" id="parent-list"></div>
+    </section>
+
+    <!-- TEACHER -->
+    <section id="teacher">
+      <h1>Teacher Page</h1>
+      <label for="teacher-pick">Choose teacher (demo)</label>
+      <select id="teacher-pick"></select>
+      <p id="teacher-msg" role="status"></p>
+      <form id="hw-form" class="card pad">
+        <h2>New Homework</h2>
+        <label for="hw-subject">Subject</label><select id="hw-subject"></select>
+        <label for="hw-title">Title</label><input type="text" id="hw-title" maxlength="90">
+        <label for="hw-ins">Instructions</label><textarea id="hw-ins" rows="3" maxlength="600"></textarea>
+        <div class="filters">
+          <div><label for="hw-date">Assignment date</label><input type="date" id="hw-date"></div>
+          <div><label for="hw-due">Due date</label><input type="date" id="hw-due"></div>
+        </div>
+        <label for="hw-photo">Photo (camera or gallery)</label>
+        <input type="file" id="hw-photo" accept="image/jpeg,image/png,image/webp">
+        <img id="hw-preview" alt="Photo preview" hidden>
+        <div class="row">
+          <button type="submit" value="draft" class="ghost">Save Draft</button>
+          <button type="submit" value="submitted">Submit for Review</button>
+        </div>
+      </form>
+      <h2>My Homework</h2>
+      <div class="grid" id="teacher-list"></div>
+    </section>
+
+    <!-- ADMIN -->
+    <section id="admin">
+      <h1>Administrator Page</h1>
+      <div class="grid" id="admin-counts"></div>
+      <h2>Waiting for review</h2><div class="grid" id="admin-queue"></div>
+      <h2>Approved - ready to publish</h2><div class="grid" id="admin-ready"></div>
+      <h2>Students (admin only)</h2><div class="scroll"><table id="student-table"></table></div>
+      <h2>Teachers and subjects</h2><div class="scroll"><table id="teacher-table"></table></div>
+    </section>
+
+    <!-- HELP -->
+    <section id="help">
+      <h1>Help and Privacy</h1>
+      <ul>
+        <li>Parents see only published homework for their own child.</li>
+        <li>Teachers upload only for their own subjects. Every upload is checked before parents see it.</li>
+        <li>Keep passwords private. Do not share student photos or details publicly.</li>
+        <li>The school must take parents' permission and follow data-protection rules.</li>
+        <li>Secure login, shared database and QR code will come in the Supabase version.</li>
+      </ul>
+      <p class="muted">The school logo is a proposed design, not yet approved by the school.</p>
+    </section>
+
+  </main>
+
+  <dialog id="popup"></dialog>
+
+  <footer>
+    <p>Government Boys Lower Secondary School Ramzan Goth Qasba Colony · SEMIS Code 408020125 · Class VIII</p>
+    <p>Made with ❤ by JKhan in Karachi, Pakistan</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
